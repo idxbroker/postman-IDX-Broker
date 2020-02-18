@@ -9,15 +9,15 @@ The collections vary in size and tests. Collections are created for specific ver
 To pass all tests:
 * Environment variable url
 * Environment variables for request headers
-* A valid IDX Broker Client API key is required.
-* A valid IDX Broker Partner API key is required.
-* An account with a featured listing is required
+* A valid IDX Broker Client API key is required for non partner calls.
+* A valid IDX Broker Partner API key is required for partner calls.
+* An account with a featured listing is required for use in the collection runner.
 
 Note: Some endpoints may fail if they are prohibited from use for an MLS. Your response coude should indicate the request was not allowed.
 
 ## Install
 
-Use Run in postman button in the readme of the collection or download a collection then import.
+Ddownload a collection then import to your postman.
 
 Download an environment and import to your postman.
 
