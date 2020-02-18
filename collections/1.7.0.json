@@ -1,0 +1,5378 @@
+{
+	"info": {
+		"_postman_id": "5e0fb59f-804d-47c5-8836-e20b08d2e625",
+		"name": "IDX API 1.7.0 Test Runner",
+		"description": "IDX Broker API calls in version 1.6.0 v2\n\nRequired:\n* Environment variable url\n* Environment variablefor client key\n* Environment variable partner key\n* Client account with at least one featured listing\n\nTests are in this order as variables such as listing ID and approved MLS are passed to subsequent API calls.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1st Test - MLS",
+			"item": [
+				{
+					"name": "approvedmls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bca98d29-6b14-42f8-a757-4168b97be857",
+								"exec": [
+									"if(responseBody !== \"\"){",
+									"    ",
+									"    // set first mls in return ",
+									"    returnData = JSON.parse(responseBody);",
+									"    ",
+									"    pm.globals.set(\"approvedMLS\", returnData[0].id);",
+									"}",
+									"else{",
+									"    ",
+									"    //set approved MLS",
+									"    pm.globals.set(\"approvedMLS\", \"a000\");",
+									"    ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/approvedmls",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"approvedmls"
+							]
+						},
+						"description": "This method provides all of the IDX IDs and names for all of the paperwork approved MLSs on the client's account.\n\nNote: This method was previously camelcased as \"approvedMLS\" but was made lower case to fit the API naming convention. Calls to \"approvedMLS\" will be forwarded to \"approvedmls\" and \"approvedMLS\" is listed as deprecated in the method list."
+					},
+					"response": []
+				},
+				{
+					"name": "listcomponents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea3a8ef4-e052-42af-9de8-b2b3e16d4d96",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/listcomponents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"listcomponents"
+							]
+						},
+						"description": "This is a simple, access anywhere, method for getting a list of all API components available."
+					},
+					"response": []
+				},
+				{
+					"name": "listmethods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9cfe465-cd33-4922-b2a5-828e2e754f4e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/listmethods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"listmethods"
+							]
+						},
+						"description": "A simple method for listing all available methods in the current API component. This method will also list which request methods (GET, PUT, POST, or DELETE) are supported by each method in addition to each method status."
+					},
+					"response": []
+				},
+				{
+					"name": "age",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ce21e1f-53cb-406a-9126-0f9f38bf6b8b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/age/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"age",
+								"{{approvedMLS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "propertytypes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "833a5c5e-b7d8-45a2-a4bf-7c14730d15e4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/propertytypes/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"propertytypes",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "Gives the property type information for all types that are available on a given MLS."
+					},
+					"response": []
+				},
+				{
+					"name": "cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d9590f35-339a-4289-864a-70be62151138",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"pm.globals.set(\"cityID\", returnData[0].cityID);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/cities/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"cities",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All cities represented in the current set of MLS data are available from this method. "
+					},
+					"response": []
+				},
+				{
+					"name": "cities sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9fd5a661-17bf-44a7-90d2-765449345bb9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/cities/sold/{{approvedMLS}}?filterField=cityID&filterValue={{cityID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"cities",
+								"sold",
+								"{{approvedMLS}}"
+							],
+							"query": [
+								{
+									"key": "filterField",
+									"value": "cityID"
+								},
+								{
+									"key": "filterValue",
+									"value": "{{cityID}}"
+								}
+							]
+						},
+						"description": "All cities represented in the current set of MLS data are available from this method. "
+					},
+					"response": []
+				},
+				{
+					"name": "counties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ac7a0ed-8de6-435f-a144-46fc5b711343",
+								"exec": [
+									"",
+									"// parse return",
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set county ID as a variable",
+									"postman.setGlobalVariable(\"countyID\", returnData[0]['countyID']);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/counties/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"counties",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All cities represented in the current set of MLS data are available from this method. "
+					},
+					"response": []
+				},
+				{
+					"name": "counties sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ac7a0ed-8de6-435f-a144-46fc5b711343",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/counties/sold/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"counties",
+								"sold",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All cities represented in the current set of MLS data are available from this method. "
+					},
+					"response": []
+				},
+				{
+					"name": "zipcodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ac7a0ed-8de6-435f-a144-46fc5b711343",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/zipcodes/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"zipcodes",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All cities represented in the current set of MLS data are available from this method. "
+					},
+					"response": []
+				},
+				{
+					"name": "zipcodes sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ac7a0ed-8de6-435f-a144-46fc5b711343",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/zipcodes/sold/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"zipcodes",
+								"sold",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All cities represented in the current set of MLS data are available from this method. "
+					},
+					"response": []
+				},
+				{
+					"name": "postalcodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e870087b-f2ec-47cf-aad9-b4430cfe4d68",
+								"exec": [
+									"if(responseBody !== \"\"){",
+									"    ",
+									"    // set first mls in return ",
+									"    returnData = JSON.parse(responseBody);",
+									"    ",
+									"    pm.globals.set(\"zipcode\", returnData[0].id);",
+									"}",
+									"else{",
+									"    ",
+									"    //set approved MLS",
+									"    pm.globals.set(\"zipcode\", \"97401\");",
+									"    ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/postalcodes/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"postalcodes",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All postal codes represented in the current set of MLS data are available from this method."
+					},
+					"response": []
+				},
+				{
+					"name": "postalcodes sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "457ccb5b-aabb-4385-9fc8-54070e4861ad",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/postalcodes/sold/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"postalcodes",
+								"sold",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All postal codes represented in the current set of MLS data are available from this method."
+					},
+					"response": []
+				},
+				{
+					"name": "propertycount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c1cf9cb4-f150-4ee1-bd75-da22bd06788c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/propertycount/{{approvedMLS}}?countType=city&countSpecifier={{cityID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"propertycount",
+								"{{approvedMLS}}"
+							],
+							"query": [
+								{
+									"key": "countType",
+									"value": "city"
+								},
+								{
+									"key": "countSpecifier",
+									"value": "{{cityID}}"
+								}
+							]
+						},
+						"description": "Gives a total number of listings available for a given city, county, or zipcode"
+					},
+					"response": []
+				},
+				{
+					"name": "propertycount sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3f8996f4-6885-4863-b7f2-332d997ec31c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/propertycount/sold/{{approvedMLS}}?countType=city&countSpecifier={{cityID}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"propertycount",
+								"sold",
+								"{{approvedMLS}}"
+							],
+							"query": [
+								{
+									"key": "countType",
+									"value": "city"
+								},
+								{
+									"key": "countSpecifier",
+									"value": "{{cityID}}"
+								}
+							]
+						},
+						"description": "Gives a total number of listings available for a given city, county, or zipcode"
+					},
+					"response": []
+				},
+				{
+					"name": "searchfields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b9bfc7a-dc64-43d2-8ad7-d34100efa0e6",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set first search field name",
+									"pm.globals.set(\"searchFieldName\", returnData[0].name);",
+									"        ",
+									"//set first search field name",
+									"pm.globals.set(\"searchFieldPtId\", returnData[0].mlsPtID);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/searchfields/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"searchfields",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "All the fields in a given MLS that are currently allowed to be searched according to MLS guidelines."
+					},
+					"response": []
+				},
+				{
+					"name": "searchfieldvalues",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b1eb5229-6872-4661-a622-fcf6077a33b9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/searchfieldvalues/{{approvedMLS}}?mlsPtID={{searchFieldPtId}}&name={{searchFieldName}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"searchfieldvalues",
+								"{{approvedMLS}}"
+							],
+							"query": [
+								{
+									"key": "mlsPtID",
+									"value": "{{searchFieldPtId}}"
+								},
+								{
+									"key": "name",
+									"value": "{{searchFieldName}}"
+								}
+							]
+						},
+						"description": "Field values in a given MLS that are currently allowed to be searched according to MLS guidelines."
+					},
+					"response": []
+				},
+				{
+					"name": "searchfieldvalues sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8c104c48-84a8-4e9b-bd8c-5eb115b35d2d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/searchfieldvalues/sold/{{approvedMLS}}?mlsPtID={{searchFieldPtId}}&name={{searchFieldName}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"searchfieldvalues",
+								"sold",
+								"{{approvedMLS}}"
+							],
+							"query": [
+								{
+									"key": "mlsPtID",
+									"value": "{{searchFieldPtId}}"
+								},
+								{
+									"key": "name",
+									"value": "{{searchFieldName}}"
+								}
+							]
+						},
+						"description": "Field values in a given MLS that are currently allowed to be searched according to MLS guidelines."
+					},
+					"response": []
+				},
+				{
+					"name": "prices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0990b7c8-a012-4c45-b238-173df32c243d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/prices/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"prices",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "The sum total of properties listed in a given MLS as well as sums for each property type in the MLS."
+					},
+					"response": []
+				},
+				{
+					"name": "prices sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d724f1db-da32-42e4-af5f-13dffd66dce0",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/mls/prices/sold/{{approvedMLS}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"mls",
+								"prices",
+								"sold",
+								"{{approvedMLS}}"
+							]
+						},
+						"description": "The sum total of properties listed in a given MLS as well as sums for each property type in the MLS."
+					},
+					"response": []
+				}
+			],
+			"description": "MLS endpoints",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2nd Test - Clients",
+			"item": [
+				{
+					"name": "apiversion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "84457c63-2148-4d3f-85ce-1fe4094a1e46",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/apiversion",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"apiversion"
+							]
+						},
+						"description": "Get the default api version."
+					},
+					"response": []
+				},
+				{
+					"name": "accountinfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c17776d-9f28-4f68-95ef-9520a8b4368e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"name": "accesskey",
+								"type": "text",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"name": "ancillarykey",
+								"type": "text",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"type": "text",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"name": "apiversion",
+								"type": "text",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/accountinfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listmethods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78d80173-08e4-4b05-af71-113a4a2a2bbf",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/listmethods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"listmethods"
+							]
+						},
+						"description": "A simple method for listing all available methods in the current API component."
+					},
+					"response": []
+				},
+				{
+					"name": "systemlinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3fcdb1d7-f0cf-4583-8a68-2cdaf4d1f8f4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/systemlinks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"systemlinks"
+							]
+						},
+						"description": "Gathers all the pages system pages (search, featured, contact, etc) that can be directly linked to without additional property information being included in the URL."
+					},
+					"response": []
+				},
+				{
+					"name": "featured",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "812729dc-ba89-43e6-a2c1-5e25ba0a60c5",
+								"exec": [
+									"if(responseBody){",
+									"    var responesData = JSON.parse(responseBody);",
+									"    ",
+									"    returnData = responesData.data;",
+									"    ",
+									"    var propertyKey = Object.keys(returnData)[0];",
+									"    ",
+									"    pm.globals.set(\"featuredId\", returnData[propertyKey].listingID);",
+									"    ",
+									"    tests[\"Account has featured ID\"] = true;",
+									"}",
+									"",
+									"// check to see if this is being used in a runner",
+									"if(pm.info.iteration > 0){",
+									"    tests[\"Account has NO featured ID. This is required for a runner\"] = false;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/featured",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"featured"
+							]
+						},
+						"description": "Returns a basic set of information for all of the client's featured (active) properties"
+					},
+					"response": []
+				},
+				{
+					"name": "listallowedfields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c08c30d5-4850-4a64-be62-f31a613e899f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/listallowedfields/{{approvedMLS}}/{{featuredId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"listallowedfields",
+								"{{approvedMLS}}",
+								"{{featuredId}}"
+							]
+						},
+						"description": "Returns the allowed returnable fields for a given listingID."
+					},
+					"response": []
+				},
+				{
+					"name": "listcomponents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b762ec67-11c4-4a3c-8644-9488e6475e7b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/listcomponents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"listcomponents"
+							]
+						},
+						"description": "This is a simple, access anywhere, method for getting a list of all API components available."
+					},
+					"response": []
+				},
+				{
+					"name": "widgetsrc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "94ee13d1-db25-4f70-a48e-1e27690c8c0b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/widgetsrc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"widgetsrc"
+							]
+						},
+						"description": "Gather all the URLs for javascript widgets on the user's account. These widgets can then be placed on the user's main site via the included URLs."
+					},
+					"response": []
+				},
+				{
+					"name": "agents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e9044c4e-f3f4-450e-8391-29bb25d8080b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/agents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"agents"
+							]
+						},
+						"description": "View agent information on a multi-user account."
+					},
+					"response": []
+				},
+				{
+					"name": "offices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b60a0925-662f-4372-8b0b-a1779c4950f5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/offices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"offices"
+							]
+						},
+						"description": "View all offices on a mutli-user account."
+					},
+					"response": []
+				},
+				{
+					"name": "cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01fae7eb-9b8e-40a1-b7b6-ee7b0c04c92a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/cities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"cities"
+							]
+						},
+						"description": "Returns the cities available in each of a client's city lists."
+					},
+					"response": []
+				},
+				{
+					"name": "cities/sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "73f36cd3-b467-450f-81fa-8053d95b5ee3",
+								"exec": [
+									"/** Check status code is under 300 if so run tests",
+									"* The following are standard tests to be preformed on all endpoints.",
+									"* Some tests will only run if status is below 300",
+									"*/",
+									"if (responseCode.code < 300) {",
+									"    // rerport the status code is in the 200s",
+									"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+									"",
+									"    // get response body length for test",
+									"    var legnth = responseBody.length;",
+									"",
+									"    // tests when code is 200 and body lenth greater than 0",
+									"    if (responseCode.code === 200 && legnth > 0) {",
+									"        // set variable of body legnth and assume true",
+									"        var bodyLength = true;",
+									"",
+									"        // parse json response",
+									"        var isJson = JSON.parse(responseBody);",
+									"",
+									"        // test for valid json",
+									"        tests[\"Valid JSON\"] = isJson;",
+									"    }",
+									"    // test body length when code is 204. Must be 0",
+									"    if (responseCode.code === 204 && legnth === 0) {",
+									"        //if body legnth is 0 then set variable to true",
+									"        var bodyLength = true;",
+									"    }",
+									"}",
+									"",
+									"// run test for body legnth",
+									"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+									"",
+									"// test for a php warning",
+									"if (!responseBody.has(\"PHP WARNING\")) {",
+									"    var phpWarn = true;",
+									"}",
+									"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+									"",
+									"//run test that response was under 30 seconds",
+									"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+									"",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/cities/sold",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"cities",
+								"sold"
+							]
+						},
+						"description": "Returns the cities available in each of a client's city lists. Limited to sold data"
+					},
+					"response": []
+				},
+				{
+					"name": "citieslistname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed4cb82b-2ee4-4f10-873d-c9d99268fb86",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/citieslistname",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"citieslistname"
+							]
+						},
+						"description": "Returns the IDs and names for each of a client's city lists including MLS city lists."
+					},
+					"response": []
+				},
+				{
+					"name": "counties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "77558666-0e34-4c25-a2e9-8a5151aac08a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/counties",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"counties"
+							]
+						},
+						"description": "Returns the counties available in each of a client's county lists."
+					},
+					"response": []
+				},
+				{
+					"name": "counties/sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "90e3d31a-c60a-41ac-ad0a-91d24403e9a5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/counties/sold",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"counties",
+								"sold"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countieslistname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5e589c8-ceb0-46ce-ac6d-d0ba2570edf7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/countieslistname",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"countieslistname"
+							]
+						},
+						"description": "Returns the IDs and names for each of a client's counties lists including MLS counties lists."
+					},
+					"response": []
+				},
+				{
+					"name": "zipcodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e5e1a21-5a6d-473f-b0e5-ab0514842988",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/zipcodes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"zipcodes"
+							]
+						},
+						"description": "Returns the zipcodes available in each of a client's zipcode lists."
+					},
+					"response": []
+				},
+				{
+					"name": "postalcodeslistname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfaca93f-66f3-4eb6-9de8-9d315527dbef",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/postalcodeslistname",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"postalcodeslistname"
+							]
+						},
+						"description": "Returns the IDs and names for each of a client's postalcode lists including MLS postalcode lists."
+					},
+					"response": []
+				},
+				{
+					"name": "postalcodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da09f4c5-b44c-47d7-be77-c8fc21045554",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/postalcodes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"postalcodes"
+							]
+						},
+						"description": "Returns the postalcodes available in each of a client's postalcode lists."
+					},
+					"response": []
+				},
+				{
+					"name": "postalcodes/sold",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da09f4c5-b44c-47d7-be77-c8fc21045554",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/postalcodes/sold",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"postalcodes",
+								"sold"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "96a75d3c-2789-46e0-a258-023afc475831",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/listing/{{approvedMLS}}/{{featuredId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"listing",
+								"{{approvedMLS}}",
+								"{{featuredId}}"
+							]
+						},
+						"description": "Returns the detailed information for a given listingID."
+					},
+					"response": []
+				},
+				{
+					"name": "soldpending",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2697c9eb-e419-4e2e-ab10-f61992e1f60f",
+								"exec": [
+									"if(pm.response.length > 0){",
+									"    ",
+									"    pm.test(\"listings returned have sold status\", function(){",
+									"        for (var key in pm.response.json()) {",
+									"            pm.expect(jsonData[key]).to.include.keys(\"idxStatus\");",
+									"            pm.expect(jsonData[key][\"idxStatus\"]).to.equal(\"sold\");",
+									"        }",
+									"    });",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/soldpending",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"soldpending"
+							]
+						},
+						"description": "Returns a basic set of information for all of the client's sold and pending properties."
+					},
+					"response": []
+				},
+				{
+					"name": "dynamicwrapperurl",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "462d9fc9-db4b-4d37-a71b-90b8bd4075da",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "dynamicURL",
+									"value": "http://testingURL.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/clients/dynamicwrapperurl",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"dynamicwrapperurl"
+							]
+						},
+						"description": "Set wrapper URL. This is the global url."
+					},
+					"response": []
+				},
+				{
+					"name": "wrappercache",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "27dd77f7-87ee-4f6f-8659-0637d97e81c1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/clients/wrappercache",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"wrappercache"
+							]
+						},
+						"description": "Delete wrapper cache."
+					},
+					"response": []
+				},
+				{
+					"name": "supplemental",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d7dec14f-3731-40a3-b225-691108cb0e7a",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set new supplemetal property ID",
+									"pm.globals.set(\"suppId\", returnData.newID);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "92049551-38bf-4efd-9b36-3bd0d03c640c",
+								"exec": [
+									"var echoPostRequest = { ",
+									"    url: pm.variables.get(\"url\")+'/clients/postalcodes/'+pm.variables.get(\"approvedMLS\"),",
+									"    method: 'GET', header: ['accesskey:'+ pm.variables.get('accesskey'), 'apiversion:'+ pm.variables.get('apiversion'),'outputtype:'+ pm.variables.get('outputtype')]",
+									"    ",
+									"};",
+									"",
+									"pm.sendRequest(echoPostRequest, function (err, res) { ",
+									"    var returenedZip = err ? err : res.json();",
+									"    postman.setGlobalVariable(\"zipCode\", returenedZip[0].id);",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "likeIdxID",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "likeMlsPtID",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "images[hp]",
+									"value": "http://example.com/image1.jpg",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "{{zipcode}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/clients/supplemental",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"supplemental"
+							]
+						},
+						"description": "Create a new supplemental listing."
+					},
+					"response": []
+				},
+				{
+					"name": "supplemental",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc8cfb62-9f9a-4693-8513-9d007f354ffc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/supplemental",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"supplemental"
+							]
+						},
+						"description": "Get supplemental listings."
+					},
+					"response": []
+				},
+				{
+					"name": "supplemental",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9fdddcb-3712-4955-b5f8-951898905983",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "likeIdxID",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "likeMlsPtID",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "images[hp]",
+									"value": "http://examplePost.com/postimage.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/clients/supplemental/{{suppId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"supplemental",
+								"{{suppId}}"
+							]
+						},
+						"description": "Update a supplemental listing."
+					},
+					"response": []
+				},
+				{
+					"name": "supplemental",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4f9422b-f2c2-442e-9c62-86743113d09b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/clients/supplemental/{{suppId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"supplemental",
+								"{{suppId}}"
+							]
+						},
+						"description": "Delete a supplemental listing."
+					},
+					"response": []
+				},
+				{
+					"name": "savedlinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bde73603-e34b-43e2-aa16-b28c35572e93",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set new saved link ID",
+									"pm.globals.set(\"savedLinkId\", returnData.newID);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "29f8c12c-e249-4296-a79a-787a40eb348c",
+								"exec": [
+									"function makeFakeData(length) {",
+									"  var text = \"\";",
+									"  var possible = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890\";",
+									"",
+									"  for (var i = 0; i < length; i++)",
+									"    text += possible.charAt(Math.floor(Math.random() * possible.length));",
+									"",
+									"  return text;",
+									"}",
+									"",
+									"//set new lead variables",
+									"pm.globals.set(\"savedLinkName\", makeFakeData(5));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "linkName",
+									"value": "{{savedLinkName}}",
+									"type": "text"
+								},
+								{
+									"key": "pageTitle",
+									"value": "{{savedLinkName}}",
+									"type": "text"
+								},
+								{
+									"key": "linkTitle",
+									"value": "{{savedLinkName}}",
+									"type": "text"
+								},
+								{
+									"key": "queryString[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "queryString[hp]",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/clients/savedlinks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"savedlinks"
+							]
+						},
+						"description": "Create a new client saved link"
+					},
+					"response": []
+				},
+				{
+					"name": "savedlinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Check status code is under 300 if so run tests",
+									"* The following are standard tests to be preformed on all endpoints.",
+									"* Some tests will only run if status is below 300",
+									"*/",
+									"if (responseCode.code < 300) {",
+									"    // rerport the status code is in the 200s",
+									"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+									"",
+									"    // get response body length for test",
+									"    var legnth = responseBody.length;",
+									"",
+									"    // tests when code is 200 and body lenth greater than 0",
+									"    if (responseCode.code === 200 && legnth > 0) {",
+									"        // set variable of body legnth and assume true",
+									"        var bodyLength = true;",
+									"",
+									"        // parse json response",
+									"        var isJson = JSON.parse(responseBody);",
+									"",
+									"        // test for valid json",
+									"        tests[\"Valid JSON\"] = isJson;",
+									"        ",
+									"        //set new saved link ID",
+									"        postman.setGlobalVariable(\"savedLinkId\", isJson['newID']);",
+									"    }",
+									"    // test body length when code is 204. Must be 0",
+									"    if (responseCode.code === 204 && legnth === 0) {",
+									"        //if body legnth is 0 then set variable to true",
+									"        var bodyLength = true;",
+									"    }",
+									"}",
+									"",
+									"// run test for body legnth",
+									"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+									"",
+									"// test for a php warning",
+									"if (!responseBody.has(\"PHP WARNING\")) {",
+									"    var phpWarn = true;",
+									"}",
+									"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+									"",
+									"//run test that response was under 30 seconds",
+									"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+									"",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "linkName",
+									"value": "Post_side_of_test",
+									"type": "text"
+								},
+								{
+									"key": "pageTitle",
+									"value": "Post_side_of_test",
+									"type": "text"
+								},
+								{
+									"key": "linkTitle",
+									"value": "Post_side_of_test",
+									"type": "text"
+								},
+								{
+									"key": "queryString[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "queryString[hp]",
+									"value": "654321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/clients/savedlinks/{{savedLinkId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"savedlinks",
+								"{{savedLinkId}}"
+							]
+						},
+						"description": "Update a client saved link"
+					},
+					"response": []
+				},
+				{
+					"name": "savedlinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7773d600-79da-41ee-8897-acb1604e5372",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/savedlinks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"savedlinks"
+							]
+						},
+						"description": "Getclient saved links"
+					},
+					"response": []
+				},
+				{
+					"name": "savedlinks Results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7773d600-79da-41ee-8897-acb1604e5372",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/savedlinks/{{savedLinkId}}/results",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"savedlinks",
+								"{{savedLinkId}}",
+								"results"
+							]
+						},
+						"description": "Get client saved links results"
+					},
+					"response": []
+				},
+				{
+					"name": "savedlinks Count",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d64194d6-275f-4508-a253-2257249ddd89",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/savedlinks/{{savedLinkId}}/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"savedlinks",
+								"{{savedLinkId}}",
+								"count"
+							]
+						},
+						"description": "Getclient saved links"
+					},
+					"response": []
+				},
+				{
+					"name": "savedlinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6c47ae63-e24c-4a2a-9819-3ccc9146a8f3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "linkName",
+									"value": "Post_side_of_test",
+									"type": "text"
+								},
+								{
+									"key": "pageTitle",
+									"value": "Post_side_of_test",
+									"type": "text"
+								},
+								{
+									"key": "linkTitle",
+									"value": "Post_side_of_test",
+									"type": "text"
+								},
+								{
+									"key": "queryString[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "queryString[hp]",
+									"value": "654321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/clients/savedlinks/{{savedLinkId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"savedlinks",
+								"{{savedLinkId}}"
+							]
+						},
+						"description": "Delete a client saved link"
+					},
+					"response": []
+				}
+			],
+			"description": "Client endpoints",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "3rd Test - Leads",
+			"item": [
+				{
+					"name": "listcomponents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07932576-1668-4d09-bb9a-2e170e1b8e3d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/leads/listcomponents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"listcomponents"
+							]
+						},
+						"description": "This is a simple, access anywhere, method for getting a list of all API components available."
+					},
+					"response": []
+				},
+				{
+					"name": "listmethods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Check status code is under 300 if so run tests",
+									"* The following are standard tests to be preformed on all endpoints.",
+									"* Some tests will only run if status is below 300",
+									"*/",
+									"if (responseCode.code < 300) {",
+									"    // rerport the status code is in the 200s",
+									"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+									"",
+									"    // get response body length for test",
+									"    var legnth = responseBody.length;",
+									"",
+									"    // tests when code is 200 and body lenth greater than 0",
+									"    if (responseCode.code === 200 && legnth > 0) {",
+									"        // set variable of body legnth and assume true",
+									"        var bodyLength = true;",
+									"",
+									"        // parse json response",
+									"        var isJson = JSON.parse(responseBody);",
+									"",
+									"        // test for valid json",
+									"        tests[\"Valid JSON\"] = isJson;",
+									"",
+									"    }",
+									"    // test body length when code is 204. Must be 0",
+									"    if (responseCode.code === 204 && legnth === 0) {",
+									"        //if body legnth is 0 then set variable to true",
+									"        var bodyLength = true;",
+									"    }",
+									"}",
+									"",
+									"// run test for body legnth",
+									"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+									"",
+									"// test for a php warning",
+									"if (!responseBody.has(\"PHP WARNING\")) {",
+									"    var phpWarn = true;",
+									"}",
+									"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+									"",
+									"//run test that response was under 30 seconds",
+									"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+									"",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/leads/listmethods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"listmethods"
+							]
+						},
+						"description": "A simple method for listing all available methods in the current API component."
+					},
+					"response": []
+				},
+				{
+					"name": "lead",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47eb5d17-47fd-477e-a64d-c28decbf7ed4",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set new lead ID",
+									"pm.globals.set(\"leadId\", returnData.newID);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8f24da18-20c5-4b9a-8bce-f8494427a5ab",
+								"exec": [
+									"function makeFakeData(length) {",
+									"  var text = \"\";",
+									"  var possible = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";",
+									"",
+									"  for (var i = 0; i < length; i++)",
+									"    text += possible.charAt(Math.floor(Math.random() * possible.length));",
+									"",
+									"  return text;",
+									"}",
+									"",
+									"//set new lead variables",
+									"pm.globals.set(\"leadFirstName\", makeFakeData(5));",
+									"pm.globals.set(\"leadLastName\", makeFakeData(5));",
+									"",
+									"var leadEmail = makeFakeData(5);",
+									"pm.globals.set(\"leadEmail\", leadEmail+'@testemail.com');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "{{leadFirstName}}",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "{{leadLastName}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{leadEmail}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/lead",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"lead"
+							]
+						},
+						"description": "Get information for one or multiple leads.\n\nExample Request: https://api.idxbroker.com/leads/lead?interval=24&startDatetime=2016-01-01+23:59:59&dateType=subscribeDate\n\nFor Data on a specific lead add/LEAD_ID_HERE\n\nExample: https://api.idxbroker.com/leads/lead/123"
+					},
+					"response": []
+				},
+				{
+					"name": "lead",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e78256ae-c4ae-4d0f-a8b2-bd5dc04ead0d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/leads/lead",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"lead"
+							]
+						},
+						"description": "Get information for one or multiple leads.\n\nExample Request: https://api.idxbroker.com/leads/lead?interval=24&startDatetime=2016-01-01+23:59:59&dateType=subscribeDate\n\nFor Data on a specific lead add/LEAD_ID_HERE\n\nExample: https://api.idxbroker.com/leads/lead/123"
+					},
+					"response": []
+				},
+				{
+					"name": "leadtraffic",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57346e6a-1bd8-4db4-97eb-a404270e69ee",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/leads/leadtraffic/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"leadtraffic",
+								"{{leadId}}"
+							]
+						},
+						"description": "Get information on a lead's traffic history."
+					},
+					"response": []
+				},
+				{
+					"name": "lead",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "716f51e7-b3f2-42bb-b769-c45ad063f711",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "testPostFirstName",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "testPostlastName",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/lead/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"lead",
+								"{{leadId}}"
+							]
+						},
+						"description": "Post information for a lead.\n\n\nExample: https://api.idxbroker.com/leads/lead/123"
+					},
+					"response": []
+				},
+				{
+					"name": "note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c052e977-3e4a-4458-94bc-427770ab3893",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set new lead ID",
+									"pm.globals.set(\"noteId\", returnData.newID);",
+									"",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "note",
+									"value": "Note",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/note/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"note",
+								"{{leadId}}"
+							]
+						},
+						"description": "Add new note information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aae89b0d-fd55-4860-b874-a18b7db0891c",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/leads/note/{{leadId}}/{{noteId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"note",
+								"{{leadId}}",
+								"{{noteId}}"
+							]
+						},
+						"description": "Get note information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8526810-aa82-4079-90da-ce4edf59675f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "note",
+									"value": "Test Note",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/note/{{leadId}}/{{noteId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"note",
+								"{{leadId}}",
+								"{{noteId}}"
+							]
+						},
+						"description": "Post new note information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2147c27c-9f5a-4484-8778-089325bd1951",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "note",
+									"value": "Test Note",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/note/{{leadId}}/{{noteId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"note",
+								"{{leadId}}",
+								"{{noteId}}"
+							]
+						},
+						"description": "Delete note information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "property",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1fb47dac-ff69-4712-9cf1-01abcd299dfd",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set new lead ID",
+									"pm.globals.set(\"propId\", returnData.newID);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "propertyName",
+									"value": "Property",
+									"type": "text"
+								},
+								{
+									"key": "property[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "property[listingID]",
+									"value": "{{featuredId}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/property/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"property",
+								"{{leadId}}"
+							]
+						},
+						"description": "Add new property information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "property",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Check status code is under 300 if so run tests",
+									"* The following are standard tests to be preformed on all endpoints.",
+									"* Some tests will only run if status is below 300",
+									"*/",
+									"if (responseCode.code < 300) {",
+									"    // rerport the status code is in the 200s",
+									"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+									"",
+									"    // get response body length for test",
+									"    var legnth = responseBody.length;",
+									"",
+									"    // tests when code is 200 and body lenth greater than 0",
+									"    if (responseCode.code === 200 && legnth > 0) {",
+									"        // set variable of body legnth and assume true",
+									"        var bodyLength = true;",
+									"",
+									"        // parse json response",
+									"        var isJson = JSON.parse(responseBody);",
+									"",
+									"        // test for valid json",
+									"        tests[\"Valid JSON\"] = isJson;",
+									"    }",
+									"    // test body length when code is 204. Must be 0",
+									"    if (responseCode.code === 204 && legnth === 0) {",
+									"        //if body legnth is 0 then set variable to true",
+									"        var bodyLength = true;",
+									"    }",
+									"}",
+									"",
+									"// run test for body legnth",
+									"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+									"",
+									"// test for a php warning",
+									"if (!responseBody.has(\"PHP WARNING\")) {",
+									"    var phpWarn = true;",
+									"}",
+									"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+									"",
+									"//run test that response was under 30 seconds",
+									"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+									"",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/leads/property/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"property",
+								"{{leadId}}"
+							]
+						},
+						"description": "Get a property information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "property",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"/** Check status code is under 300 if so run tests",
+									"* The following are standard tests to be preformed on all endpoints.",
+									"* Some tests will only run if status is below 300",
+									"*/",
+									"if (responseCode.code < 300) {",
+									"    // rerport the status code is in the 200s",
+									"    tests[\"Status code is 200 or 204\"] = responseCode.code < 300;",
+									"",
+									"    // get response body length for test",
+									"    var legnth = responseBody.length;",
+									"",
+									"    // tests when code is 200 and body lenth greater than 0",
+									"    if (responseCode.code === 200 && legnth > 0) {",
+									"        // set variable of body legnth and assume true",
+									"        var bodyLength = true;",
+									"",
+									"        // parse json response",
+									"        var isJson = JSON.parse(responseBody);",
+									"",
+									"        // test for valid json",
+									"        tests[\"Valid JSON\"] = isJson;",
+									"    }",
+									"    // test body length when code is 204. Must be 0",
+									"    if (responseCode.code === 204 && legnth === 0) {",
+									"        //if body legnth is 0 then set variable to true",
+									"        var bodyLength = true;",
+									"    }",
+									"}",
+									"",
+									"// run test for body legnth",
+									"tests[\"Retun Length is correct for http code\"] = bodyLength;",
+									"",
+									"// test for a php warning",
+									"if (!responseBody.has(\"PHP WARNING\")) {",
+									"    var phpWarn = true;",
+									"}",
+									"tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = phpWarn;",
+									"",
+									"//run test that response was under 30 seconds",
+									"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+									"",
+									"",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "propertyName",
+									"value": "Test POST Property",
+									"type": "text"
+								},
+								{
+									"key": "property[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "property[listingID]",
+									"value": "{{featuredId}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/property/{{leadId}}/{{propId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"property",
+								"{{leadId}}",
+								"{{propId}}"
+							]
+						},
+						"description": "Update a property information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "property",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8f343a9-f788-42df-8832-5bf437051f08",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/leads/property/{{leadId}}/{{propId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"property",
+								"{{leadId}}",
+								"{{propId}}"
+							]
+						},
+						"description": "Delete a property information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "03068a22-993f-49fd-8731-2e8989b5193a",
+								"exec": [
+									"returnData = JSON.parse(responseBody);",
+									"",
+									"//set new lead ID",
+									"pm.globals.set(\"searchId\", returnData.newID);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "searchName",
+									"value": "Search",
+									"type": "text"
+								},
+								{
+									"key": "search[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "search[hp]",
+									"value": "search[hp]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/search/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"search",
+								"{{leadId}}"
+							]
+						},
+						"description": "New search information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1247889a-d345-451f-add5-0655038bd1d8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/leads/search/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"search",
+								"{{leadId}}"
+							]
+						},
+						"description": "Get saved search information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a00dec95-a874-46f3-a5ca-9c087894b11b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "searchName",
+									"value": "Post Test Search",
+									"type": "text"
+								},
+								{
+									"key": "search[idxID]",
+									"value": "{{approvedMLS}}",
+									"type": "text"
+								},
+								{
+									"key": "search[hp]",
+									"value": "654321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/leads/search/{{leadId}}/{{searchId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"search",
+								"{{leadId}}",
+								"{{searchId}}"
+							]
+						},
+						"description": "Update search information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "086c2102-f14f-4893-a967-5ea6b13cef25",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/leads/search/{{leadId}}/{{searchId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"search",
+								"{{leadId}}",
+								"{{searchId}}"
+							]
+						},
+						"description": "Delete search information for a lead.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "lead",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c1d01bd7-9e70-4f63-92b0-bedb5491ee87",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{accesskey}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/leads/lead/{{leadId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"leads",
+								"lead",
+								"{{leadId}}"
+							]
+						},
+						"description": "Delete Lead\n\nExample: https://api.idxbroker.com/leads/lead/123"
+					},
+					"response": []
+				}
+			],
+			"description": "Lead endpoints",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "4th Test - Partners",
+			"item": [
+				{
+					"name": "listmethods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f5f24614-74ee-47e4-b329-8cd6ad334090",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/listmethods",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"listmethods"
+							]
+						},
+						"description": "A simple method for listing all available methods in the current API component."
+					},
+					"response": []
+				},
+				{
+					"name": "listcomponents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46efea1c-ffe6-4f76-b982-49495a24b51f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/listcomponents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"listcomponents"
+							]
+						},
+						"description": "This is a simple, access anywhere, method for getting a list of all API components available."
+					},
+					"response": []
+				},
+				{
+					"name": "clients",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0912529-b31f-4816-be26-39153361ad94",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/clients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"clients"
+							]
+						},
+						"description": "A list of clients available to a given partner. The list of clients can be filtered by GET values."
+					},
+					"response": []
+				},
+				{
+					"name": "propertytypes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57839f43-bc29-46f0-b0f1-db4259350d24",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/propertytypes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"propertytypes"
+							]
+						},
+						"description": "Gives the names and IDs of all available property types. This method differs from the property type lookup method in the client API component in that it can look up property types for any active Platinum MLS, not just those for which the client is a member."
+					},
+					"response": []
+				},
+				{
+					"name": "pricing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c17776d-9f28-4f68-95ef-9520a8b4368e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"name": "ancillarykey",
+								"type": "text",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"type": "text",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"name": "apiversion",
+								"type": "text",
+								"value": "{{apiversion}}"
+							},
+							{
+								"key": "ancillarykey",
+								"value": "{{ancillarykey}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/pricing",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"pricing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedsupplemental",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ea539e4-1406-4ede-93c3-eacb260f7896",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedsupplemental",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedsupplemental"
+							]
+						},
+						"description": "Get a list of supplemental (non-MLS) properties."
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedproperties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1275436-14dd-4a74-9f3c-43c232a22bfe",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedproperties",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedproperties"
+							]
+						},
+						"description": "Get a list of all lead saved properties."
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedagents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "617f351d-ce0c-466b-a656-bd6563c91a33",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedagents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedagents"
+							]
+						},
+						"description": "Get a list of all agents for your clients."
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedleadtraffic",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "153cef6e-016e-470f-8f76-71293bc0c0d0",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedleadtraffic",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedleadtraffic"
+							]
+						},
+						"description": "Get a list of all leads traffic history."
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedleads",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3389e24-1e6b-4303-b2a8-29087d614d5c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedleads",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedleads"
+							]
+						},
+						"description": "Get a list of all leads."
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedsearches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c14cf3ba-a3e2-44cb-99cf-81b40addeace",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedsearches",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedsearches"
+							]
+						},
+						"description": "Get a list of all lead saved searches."
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedsoldpending",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e1934a8-50df-4d84-a93d-5b404dcf84fa",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedsoldpending",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedsoldpending"
+							]
+						},
+						"description": "Get a list of sold/pending MLS properties."
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedfeatured",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d97aa1c8-e1c0-412c-83a0-f2c2ae6de6fa",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedfeatured",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedfeatured"
+							]
+						},
+						"description": "Get a list of featured MLS properties. "
+					},
+					"response": []
+				},
+				{
+					"name": "aggregatedlistingstatus",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "697c5507-cb9f-44f3-9ac9-46cb55c066dc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "accesskey",
+								"value": "{{ancillarykey}}"
+							},
+							{
+								"key": "outputtype",
+								"value": "{{outputtype}}"
+							},
+							{
+								"key": "apiversion",
+								"value": "{{apiversion}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/partners/aggregatedlistingstatus",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"partners",
+								"aggregatedlistingstatus"
+							]
+						},
+						"description": "This method gives the status for all MLS listings (not supplemental) broken down by client account ID. This includes sold/pending listings with an unknown status which are not usually returned by sold/pending api methods. This is helpful if you need to know when previously gathered featured properties have left the market."
+					},
+					"response": []
+				}
+			],
+			"description": "Partner Endpoints",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "23501c96-b4dd-4c33-a910-404a3a18fb4c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "51f04c17-7317-4143-9580-cbe3dbd6c6da",
+				"type": "text/javascript",
+				"exec": [
+					"/** Check status code is under 300 if so run tests",
+					"* The following are standard tests to be preformed on all IDX endpoints.",
+					"* Some tests will only run if status is below 300",
+					"* These tests apply to all the api endpoints. Thus should be placed at the collection level.",
+					"*/",
+					"",
+					"// test that response was under 30 seconds",
+					"tests[\"Response time is under than 30 sec\"] = responseTime < 30000;",
+					"",
+					"// test the COntent-Type header is returned",
+					"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+					"",
+					"var httpCode = responseCode.code;",
+					"",
+					"function reposonseCode200s(code, responseBody){",
+					"    ",
+					"    switch(code){",
+					"        case 200:",
+					"",
+					"            // check the return string legnth to be greater than 0..",
+					"            tests[\"Retun Length is correct for http code\"] = responseBody.length > 0 ? true:false;",
+					"            ",
+					"            // look for the string \"PHP WARNING\" as this has been seen in returns",
+					"            tests[\"Does NOT contain text \\\"PHP Warning\\\"\"] = !responseBody.has(\"PHP WARNING\") ? true:false;",
+					"",
+					"            // parse json response",
+					"            var validJson = JSON.parse(responseBody) ",
+					"",
+					"            // test for valid json",
+					"            tests[\"Valid JSON\"] = validJson ? true:false;",
+					"        break;",
+					"        case 204:",
+					"",
+					"            // check the return string legnth to be 0.",
+					"            tests[\"Retun Length is correct for http code\"] = responseBody.length === 0 ? true:false;",
+					"        break;",
+					"    }",
+					"}",
+					"",
+					"// handle for specific and ranges of http code responses",
+					"switch(true){",
+					"        case (httpCode == 200):",
+					"            reposonseCode200s(httpCode, responseBody);",
+					"        break;",
+					"        case (httpCode == 204):",
+					"            reposonseCode200s(httpCode, responseBody);",
+					"        break;",
+					"        case (500 > httpCode && httpCode > 399):",
+					"            tests[\"Did return a 400 code. This indicates a bad request. Check the response code and body.\"] = false;",
+					"        break;",
+					"        case (httpCode > 499):",
+					"            tests[\"Did return a 500 code. This indicates server error. Make a ticket!!\"] = false;",
+					"        break;",
+					"    }",
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

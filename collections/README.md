@@ -6,8 +6,7 @@ Docs https://www.getpostman.com/docs/collections
 
 ## Importing
 
-Use the Run in Postman button to import a collection.
-You can also import from the raw github link.
+You can  import from the raw github link.
 The text from the raw link can also be copied and pasted into postman.
 Or download the repo and import.
 
